@@ -8,7 +8,7 @@
  *
  * ------------------------------------------------------------------------
  */
-class Welcome extends Application {
+class First extends Application {
 
     function __construct() {
         parent::__construct();
@@ -18,23 +18,25 @@ class Welcome extends Application {
     //  The normal pages
     //-------------------------------------------------------------
 
-    function index() {
-        $this->data['pagebody'] = 'homepage';    // this is the view we want shown
+    function index() 
+    {
+        $this->data['pagebody'] = 'justone';    // this is the view we want shown
         // build the list of authors, to pass on to our view
-        $source = $this->quotes->all();
-        $authors = array();
-        foreach ($source as $record) {
-            $authors[] = array('who' => $record['who'], 'mug' => $record['mug'], 'href' => $record['where']);
-        }
-        $this->data['authors'] = $authors;
-
+        $source = $this->quotes->first();
+        $this->data = array_merge($this->data, $source);
         $this->render();
     }
     
-    function shucks() {
+    function zzz() 
+    {
+        $this->index();
+    }
+    
+    function gimme($record_number)
+    {
         $this->data['pagebody'] = 'justone';    // this is the view we want shown
         // build the list of authors, to pass on to our view
-        $source = $this->quotes->get(2);
+        $source = $this->quotes->get($record_number);
         $this->data = array_merge($this->data, $source);
         $this->render();
     }
