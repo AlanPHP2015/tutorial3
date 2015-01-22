@@ -10,6 +10,13 @@
 |
 */
 
+$hook['display_override'] = array(
+                                'class'    => 'Displayoverride',
+                                'function' => 'Boldcapitals',
+                                'filename' => 'Boldcapitals.php',
+                                'filepath' => 'hooks',
+                                'params'   => array()
+                                );
 
 
 /* End of file hooks.php */
